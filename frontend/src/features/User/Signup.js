@@ -1,19 +1,18 @@
-import React, { Fragment, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { useSelector, useDispatch } from 'react-redux';
-import { signupUser, userSelector, clearState } from './UserSlice';
-import { useHistory } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import React, { Fragment, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
+import { signupUser, userSelector, clearState } from "./UserSlice";
+import { useHistory } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const dispatch = useDispatch();
   const { register, errors, handleSubmit } = useForm();
   const history = useHistory();
 
-  const { isFetching, isSuccess, isError, errorMessage } = useSelector(
-    userSelector
-  );
+  const { isFetching, isSuccess, isError, errorMessage } =
+    useSelector(userSelector);
   const onSubmit = (data) => {
     dispatch(signupUser(data));
   };
@@ -27,7 +26,7 @@ const Signup = () => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(clearState());
-      history.push('/');
+      history.push("/");
     }
 
     if (isError) {
@@ -71,12 +70,12 @@ const Signup = () => {
                 </div>
               </div>
               <div>
-                {/* <label
+                <label
                   for="email"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Email address
-                </label> */}
+                </label>
                 <div className="mt-1">
                   <input
                     id="email"
